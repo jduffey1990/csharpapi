@@ -34,6 +34,34 @@ namespace DotnetApi.Data {
             IDbConnection dbConnection = new SqlConnection(_config.GetConnectionString("DefaultConnection"));
             return dbConnection.Execute(sql);
         }
+        public bool ExecuteSQLWithParameters(string sql, List<SqlParameter> parameters)
+        {
+            // Create a new connection using the connection string from configuration
+            using (SqlConnection dbConnection = new SqlConnection(_config.GetConnectionString("DefaultConnection")))
+            {
+                // Create a command object with the SQL query and bind the connection
+                using (SqlCommand commandWithParams = new SqlCommand(sql, dbConnection))
+                {
+                    // Add each parameter to the command object
+                    foreach (SqlParameter parameter in parameters)
+                    {
+                        commandWithParams.Parameters.Add(parameter);
+                    }
+
+                    // Open the database connection
+                    dbConnection.Open();
+
+                    // Execute the command and store the number of rows affected
+                    int rowsAffected = commandWithParams.ExecuteNonQuery();
+
+                    // Close the database connection (though 'using' statement handles it automatically)
+                    dbConnection.Close();
+
+                    // Return true if the operation affected at least one row
+                    return rowsAffected > 0;
+                }
+            }
+        }
         
     }
 }
