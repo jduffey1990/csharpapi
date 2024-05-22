@@ -1,6 +1,6 @@
 # DotnetAPI Project
 
-![Certification Image](./projectimgs/cert.png)
+![Certification Image](./projectimgs/certif.png)
 
 ## Table of Contents
 - [Introduction](#introduction)
