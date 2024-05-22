@@ -14,7 +14,27 @@
 - [License](#license)
 
 ## Introduction
-DotnetAPI is a RESTful API built using C# .NET Core, utilizing Dapper for data access and JWT for security. My development up until this point has mainly focused on frontend endeavors, with the most base understanding of API and back end development as a means to an end.  I wanted to correct that gap in knowledge while learning new language and frameworks.  This course was a true deep dive into C# .NET Core with plenty of SQL to give deep backend understanding.  The API features complex SQL queries and stored procedures for efficient data handling. It was initially deployed on Azure but is now configured for local development to avoid unnecessary costs.
+DotnetAPI is a RESTful API built using C# .NET Core, utilizing Dapper for data access and JWT for security. My development up until this point has mainly focused on frontend endeavors, with the most basic understanding of API and backend development as a means to an end. I wanted to correct that gap in knowledge while learning new languages and frameworks.
+
+To address this, I took a comprehensive course by Dominic Tripodi on C# .NET Core, which provided a deep dive into backend development. This course covered a range of topics including complex SQL queries, stored procedures, and deploying applications to Azure. Through this course, I gained a deep understanding of backend systems, which I applied to create DotnetAPI.
+
+The API features complex SQL queries and stored procedures for efficient data handling. It was initially deployed on Azure but is now configured for local development to avoid unnecessary costs.
+
+### Achievements in the Project
+- **Backend Mastery**: Developed a solid understanding of backend development with C# .NET Core, focusing on creating efficient, secure APIs.
+- **SQL Proficiency**: Implemented complex SQL queries and stored procedures to handle data efficiently.
+- **Security Implementation**: Integrated JWT for secure authentication and authorization, ensuring the API's security.
+- **Cloud Deployment**: Gained hands-on experience in deploying applications to Azure, although the project is now set up for local development to manage costs.
+
+### Career Implications
+This project has significantly broadened my skill set, making me well-prepared for various backend development roles. I am now equipped to handle:
+- **Backend Developer**: With my newfound expertise in C# .NET Core and SQL, I am ready to take on roles focused on backend development.
+- **Full-Stack Developer**: Combining my frontend experience with my backend knowledge, I am capable of developing full-stack applications.
+- **API Developer**: Specializing in creating and managing secure, efficient APIs.
+- **Cloud Developer**: With experience in deploying applications to cloud platforms like Azure.
+
+Through this project, I have demonstrated my ability to quickly learn and apply new technologies, bridging my previous frontend focus with a strong backend capability. This makes me a versatile developer ready for a wide range of roles in the software development field.
+
 
 ## Features
 - Secure authentication using JWT and Microsoft's token identity model.
