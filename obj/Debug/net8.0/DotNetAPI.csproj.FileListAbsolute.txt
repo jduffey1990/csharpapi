@@ -73,3 +73,4 @@ C:\Users\Jordan Duffey\Desktop\udemy\DotNetAPICourse-main\mine\DotNetAPI\bin\Deb
 C:\Users\Jordan Duffey\Desktop\udemy\DotNetAPICourse-main\mine\DotNetAPI\bin\Debug\net8.0\Microsoft.EntityFrameworkCore.Relational.dll
 C:\Users\Jordan Duffey\Desktop\udemy\DotNetAPICourse-main\mine\DotNetAPI\bin\Debug\net8.0\Microsoft.EntityFrameworkCore.SqlServer.dll
 C:\Users\Jordan Duffey\Desktop\udemy\DotNetAPICourse-main\mine\DotNetAPI\obj\Debug\net8.0\DotNetAPI.sourcelink.json
+C:\Users\Jordan Duffey\Desktop\udemy\DotNetAPICourse-main\mine\DotNetAPI\bin\Debug\net8.0\Microsoft.AspNetCore.Authentication.JwtBearer.dll

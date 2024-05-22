@@ -15,6 +15,7 @@ namespace DotnetAPI.Controllers;
 [ApiController]
 [Route("[controller]")]
 public class UserEFController : ControllerBase
+//Again, a mock controller to show EF functionality.  Dapper was more functional with the overall codebase, so this is educational more than functional to the codebase
 {
     IUserRepository _userRepository;
     IMapper _mapper;

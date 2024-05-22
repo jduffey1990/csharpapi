@@ -9,11 +9,12 @@ using DotnetApi.Dtos;
 using System.Reflection.Emit;
 
 
-namespace DotnetAPI.Controllers;
+namespace DotnetAPI.Controllers; 
 
 [ApiController]
 [Route("[controller]")]
 public class UserController : ControllerBase
+ //This controller is present now to show the starting point, as this is a learning file.  We created all of the endpoints with single functionality.  Once we added stored procedures to the DB, we were able to simplify in the UserCompleteController.
 {
     DataContextDapper _dapper;
     public UserController(IConfiguration config)
@@ -83,7 +84,6 @@ public class UserController : ControllerBase
         parameters.Add("@Active", user.Active);
         parameters.Add("@UserId", user.UserId);
                 
-        Console.WriteLine(sql);    
 
         if(_dapper.ExecuteSQL(sql, parameters))
         {

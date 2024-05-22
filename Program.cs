@@ -1,4 +1,7 @@
+using System.Text;
 using DotnetAPI.Data;
+using Microsoft.AspNetCore.Authentication.JwtBearer;
+using Microsoft.IdentityModel.Tokens;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -13,7 +16,7 @@ builder.Services.AddCors((options) =>
     {
         options.AddPolicy("DevCors", (coursBuilder) =>
             {
-                coursBuilder.WithOrigins("http://localhost:4200", "http://localhost:3000", "http://localhost:8000")
+                coursBuilder.WithOrigins("http://localhost:4200", "http://localhost:3000", "http://localhost:8000", "http://localhost:500")
                     .AllowAnyMethod()
                     .AllowAnyHeader()
                     .AllowCredentials();
@@ -29,6 +32,28 @@ builder.Services.AddCors((options) =>
 
 builder.Services.AddScoped<IUserRepository, UserRepository>();  //abstraction to allow access to these 
 
+string? tokenKeyString = builder.Configuration.GetSection("AppSettings:TokenKey").Value;
+
+SymmetricSecurityKey tokenKey = new SymmetricSecurityKey(
+    Encoding.UTF8.GetBytes(
+        tokenKeyString != null ? tokenKeyString : ""
+    )
+);
+
+TokenValidationParameters tokenValidationParameters = new TokenValidationParameters()
+{
+    IssuerSigningKey = tokenKey,
+    ValidateIssuer = false,
+    ValidateIssuerSigningKey = false,
+    ValidateAudience = false
+};
+
+builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
+    .AddJwtBearer(options => 
+    {
+        options.TokenValidationParameters = tokenValidationParameters;
+    });
+
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
@@ -43,14 +68,11 @@ else{
     app.UseHttpsRedirection();
 }
 
-app.MapControllers();
+app.UseAuthentication(); //These two must be in this order!!!!!! it is a very silent issue, and must happen this way Authent the author!!!
 
-// app.MapGet("/weatherforecast", () =>
-// {
-    
-// })
-// .WithName("GetWeatherForecast")
-// .WithOpenApi();
+app.UseAuthorization();
+
+app.MapControllers();
 
 app.Run();
 

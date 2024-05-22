@@ -1,6 +1,6 @@
 namespace DotnetApi.Dtos
 {
-    public partial class UserToAddDto
+    public partial class UserToAddDto  //Only used in EF files
     {
         public string FirstName {get; set;} = "";
         public string LastName {get; set;} = "";

@@ -3,7 +3,7 @@ using Microsoft.EntityFrameworkCore;
 
 namespace DotnetAPI.Data
 {
-     public class DataContextEF : DbContext
+     public class DataContextEF : DbContext //ALL EF modules have nothing to do with final product, they are for learning only
     {
         private readonly IConfiguration _config;
 

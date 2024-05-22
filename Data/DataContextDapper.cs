@@ -12,6 +12,7 @@ namespace DotnetApi.Data {
         }
 
         public IEnumerable<T> LoadData<T>(string sql)
+    
         {
             IDbConnection dbConnection = new SqlConnection(_config.GetConnectionString("DefaultConnection"));
             return dbConnection.Query<T>(sql);
@@ -21,7 +22,7 @@ namespace DotnetApi.Data {
             IDbConnection dbConnection = new SqlConnection(_config.GetConnectionString("DefaultConnection"));
             return dbConnection.QuerySingle<T>(sql);
         }
-        public bool ExecuteSQL(string sql, object parameters = null)
+        public bool ExecuteSQL(string sql, DynamicParameters parameters = null)
 {
             using (IDbConnection dbConnection = new SqlConnection(_config.GetConnectionString("DefaultConnection")))
             {
@@ -34,33 +35,17 @@ namespace DotnetApi.Data {
             IDbConnection dbConnection = new SqlConnection(_config.GetConnectionString("DefaultConnection"));
             return dbConnection.Execute(sql);
         }
-        public bool ExecuteSQLWithParameters(string sql, List<SqlParameter> parameters)
+
+        public IEnumerable<T> LoadDataWithParameters<T>(string sql, DynamicParameters parameters)
+    
         {
-            // Create a new connection using the connection string from configuration
-            using (SqlConnection dbConnection = new SqlConnection(_config.GetConnectionString("DefaultConnection")))
-            {
-                // Create a command object with the SQL query and bind the connection
-                using (SqlCommand commandWithParams = new SqlCommand(sql, dbConnection))
-                {
-                    // Add each parameter to the command object
-                    foreach (SqlParameter parameter in parameters)
-                    {
-                        commandWithParams.Parameters.Add(parameter);
-                    }
-
-                    // Open the database connection
-                    dbConnection.Open();
-
-                    // Execute the command and store the number of rows affected
-                    int rowsAffected = commandWithParams.ExecuteNonQuery();
-
-                    // Close the database connection (though 'using' statement handles it automatically)
-                    dbConnection.Close();
-
-                    // Return true if the operation affected at least one row
-                    return rowsAffected > 0;
-                }
-            }
+            IDbConnection dbConnection = new SqlConnection(_config.GetConnectionString("DefaultConnection"));
+            return dbConnection.Query<T>(sql, parameters);
+        }
+        public T LoadDataSingleWithParameters<T>(string sql, DynamicParameters parameters)
+        {
+            IDbConnection dbConnection = new SqlConnection(_config.GetConnectionString("DefaultConnection"));
+            return dbConnection.QuerySingle<T>(sql, parameters);
         }
         
     }
