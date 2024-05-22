@@ -20,5 +20,3 @@
   </ItemGroup>
 
 </Project>
-
-// local host db string for appsettings - Server=localhost; Database=DotNetCourseDatabase; Trusted_Connection=true; TrustServerCertificate=true
