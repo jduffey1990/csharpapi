@@ -1,5 +1,4 @@
 using System.Text;
-using DotnetAPI.Data;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.IdentityModel.Tokens;
 
@@ -30,7 +29,6 @@ builder.Services.AddCors((options) =>
             });
     });
 
-builder.Services.AddScoped<IUserRepository, UserRepository>();  //abstraction to allow access to these 
 
 string? tokenKeyString = builder.Configuration.GetSection("AppSettings:TokenKey").Value;
 
@@ -68,7 +66,7 @@ else{
     app.UseHttpsRedirection();
 }
 
-app.UseAuthentication(); //These two must be in this order!!!!!! it is a very silent issue, and must happen this way Authent the author!!!
+app.UseAuthentication(); //These two must be in this order!!!!!! it is a very silent issue, and must happen this way Authent then author!!!
 
 app.UseAuthorization();
 
